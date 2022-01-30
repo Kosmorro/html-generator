@@ -1,0 +1,118 @@
+@font-face {
+    font-family: "Nimbus Sans L";
+    font-weight: normal;
+    src: url("fonts/nimbus/NimbusSanL-Reg.otf");
+}
+
+@font-face {
+    font-family: "Nimbus Sans L";
+    font-weight: bold;
+    src: url("fonts/nimbus/NimbusSanL-Bol.otf");
+}
+
+body {
+    margin: 93px 30px;
+    font-family: "Helvetica Neue", "Nimbus Sans L", sans-serif;
+    font-size: 11px;
+    line-height: 21px;
+}
+
+h1 {
+    font-size: 23px;
+    line-height: 47px;
+}
+
+h1::before {
+    content: "";
+    display: block;
+    width: 84px;
+    height: 28px;
+    background-image: url("img/logo.svg");
+    background-size: cover;
+}
+
+h1::after {
+    content: "";
+    display: block;
+    width: 204px;
+    height: 204px;
+    margin-top: -100px;
+    float: right;
+    background-image: url("img/instrument.png");
+    background-size: cover;
+}
+
+section.moon-events {
+    display: flex;
+    flex-direction: row;
+    min-height: 40px;
+}
+
+section.moon-events .data {
+    padding-left: 36px;
+    line-height: 12px;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+section.moon-events .data.moonphase {
+    background-image: url("img/moon-phase.png");
+    background-repeat: no-repeat;
+    background-size: 31px;
+}
+
+section.moon-events .data.events {
+    flex-grow: 2;
+}
+
+section.moon-events .data h3 {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 5px;
+    display: block;
+    font-weight: normal;
+    font-size: 9px;
+}
+
+section.moon-events .data ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    font-size: 11px;
+}
+
+section.moon-events .data ul li {
+    margin: 0;
+    padding: 0;
+}
+
+section.moon-events .data ul li strong {
+    font-size: 1.2em;
+}
+
+section.moon-events .data .best-event {
+    float: left;
+    margin-right: 5px;
+}
+
+section.moon-events .data .best-event img {
+    height: 31px
+}
+
+section.moon-events .data .best-event.conjunction img:nth-child(1) {
+    margin-right: -10px;
+}
+
+section.moon-events .data .best-event.occultation img:nth-child(1) {
+    margin-right: -20px;
+}
+
+.ephemerides {
+    margin-top: 40px;
+}
+
+.ephemerides svg {
+    width: 150mm;
+    height: 100mm;
+}
