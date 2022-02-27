@@ -2,31 +2,34 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Résumé de votre ciel</title>
-    <link rel="stylesheet" href="template.css" />
+    <title>{{ page_title }}</title>
+    <link rel="stylesheet" href="{{ css_template }}" />
 </head>
 <body>
     
-    <h1>Résumé de votre ciel</h1>
-    <h2>Mercredi 08 décembre 2021</h2>
+    <h1>{{ page_title }}</h1>
+    <h2>{{ date }}</h2>
 
-    <p>Ce document synthétise les éphémérides et les événements prévus pour le mercredi 08 décembre 2021. Son but est de vous aider à préparer votre soirée d’observation. Toutes les heures sont données en UTC+1.</p>
-    <p>N’oubliez pas de vous assurer que les conditions météo sont favorables avant de sortir votre matériel d’observation.</p>
+    <section class="introduction">
+        <p>{{ introduction_1 }}</p>
+        <p>{{ introduction_2 }}</p>
+    </section>
 
     <section class="moon-events">
         <div class="data moonphase">
-            <h3>Phase de la Lune&nbsp;:</h3>
-            Premier croissant
+            <h3>{{ moon_phase_title }}</h3>
+            <span class="text">{{ moon_phase }}</span>
         </div>
         <div class="data events">
             <aside class="best-event conjonction">
-                <img src="img/objects/jupiter.png" alt="Saturne" />
-                <img src="img/objects/moon.png" alt="Moon" />
+                {{ event_illustration }}
             </aside>
-            <h3>Événements prévus&nbsp;:</h3>
-            <ul>
-                <li><strong>04h42</strong> Lune et Jupiter sont en conjonction</li>
-            </ul>
+            <aside class="events-list">
+                <h3>{{ events_title }}</h3>
+                <ul>
+                    {{ events_list }}
+                </ul>
+            </aside>
         </div>
     </section>
 
@@ -117,7 +120,7 @@
                 height="6.0854168"
                 preserveAspectRatio="none"
                 style="image-rendering:optimizeQuality"
-                xlink:href="img/objects/jupiter.png"
+                xlink:href="{{ image_jupiter }}"
                 id="image1516"
                 x="0"
                 y="76.682716" />
@@ -126,7 +129,7 @@
                 height="6.0854168"
                 preserveAspectRatio="none"
                 style="image-rendering:optimizeQuality"
-                xlink:href="img/objects/mars.png"
+                xlink:href="{{ image_mars }}"
                 id="image1528"
                 x="0"
                 y="66.12085" />
@@ -135,7 +138,7 @@
                 height="6.1104593"
                 preserveAspectRatio="none"
                 style="image-rendering:optimizeQuality"
-                xlink:href="img/objects/mercury.png"
+                xlink:href="{{ image_mercury }}"
                 id="image1540"
                 x="0"
                 y="44.907673" />
@@ -144,7 +147,7 @@
                 height="6.0854168"
                 preserveAspectRatio="none"
                 style="image-rendering:optimizeQuality"
-                xlink:href="img/objects/moon.png"
+                xlink:href="{{ image_moon }}"
                 id="image1552"
                 x="-1.11262e-06"
                 y="34.349384" />
@@ -153,7 +156,7 @@
                 height="6.0854168"
                 preserveAspectRatio="none"
                 style="image-rendering:optimizeQuality"
-                xlink:href="img/objects/neptune.png"
+                xlink:href="{{ image_neptune }}"
                 id="image1564"
                 x="-0.046453211"
                 y="97.87085" />
@@ -162,7 +165,7 @@
                 height="6.0854168"
                 preserveAspectRatio="none"
                 style="image-rendering:optimizeQuality"
-                xlink:href="img/objects/pluto.png"
+                xlink:href="{{ image_pluto }}"
                 id="image1576"
                 x="0"
                 y="118.48689" />
@@ -171,7 +174,7 @@
                 height="6.0854168"
                 preserveAspectRatio="none"
                 style="image-rendering:optimizeQuality"
-                xlink:href="img/objects/saturn.png"
+                xlink:href="{{ image_saturn }}"
                 id="image1588"
                 x="-3.0385308"
                 y="87.266052" />
@@ -180,7 +183,7 @@
                 height="6.0854168"
                 preserveAspectRatio="none"
                 style="image-rendering:optimizeQuality"
-                xlink:href="img/objects/sun.png"
+                xlink:href="{{ image_sun }}"
                 id="image1600"
                 x="0"
                 y="23.76605" />
@@ -189,7 +192,7 @@
                 height="6.0854168"
                 preserveAspectRatio="none"
                 style="image-rendering:optimizeQuality"
-                xlink:href="img/objects/uranus.png"
+                xlink:href="{{ image_uranus }}"
                 id="image1612"
                 x="-2.2121177"
                 y="108.43272" />
@@ -198,7 +201,7 @@
                 height="6.0854168"
                 preserveAspectRatio="none"
                 style="image-rendering:optimizeQuality"
-                xlink:href="img/objects/venus.png"
+                xlink:href="{{ image_venus }}"
                 id="image1624"
                 x="0"
                 y="55.251461" />
@@ -212,7 +215,7 @@
                     id="tspan8696"
                     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.264582"
                     x="10.350791"
-                    y="27.828281">SOLEIL</tspan></text>
+                    y="27.828281">{{ sun }}</tspan></text>
                 <text
                 xml:space="preserve"
                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52776px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.264582"
@@ -223,7 +226,7 @@
                     id="tspan8696-9"
                     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.264582"
                     x="10.350791"
-                    y="38.31929">SOLEIL</tspan></text>
+                    y="38.31929">{{ moon }}</tspan></text>
                 <text
                 xml:space="preserve"
                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52776px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.264582"
@@ -234,7 +237,7 @@
                     id="tspan8696-6"
                     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.264582"
                     x="10.350791"
-                    y="49.025375">SOLEIL</tspan></text>
+                    y="49.025375">{{ mercury }}</tspan></text>
                 <text
                 xml:space="preserve"
                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52776px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.264582"
@@ -245,7 +248,7 @@
                     id="tspan8696-9-6"
                     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.264582"
                     x="10.350791"
-                    y="58.987217">SOLEIL</tspan></text>
+                    y="58.987217">{{ venus }}</tspan></text>
                 <text
                 xml:space="preserve"
                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52776px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.264582"
@@ -256,7 +259,7 @@
                     id="tspan8696-61"
                     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.264582"
                     x="10.350791"
-                    y="70.200218">SOLEIL</tspan></text>
+                    y="70.200218">{{ mars }}</tspan></text>
                 <text
                 xml:space="preserve"
                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52776px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.264582"
@@ -267,7 +270,7 @@
                     id="tspan8696-9-7"
                     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.264582"
                     x="10.350791"
-                    y="80.691231">SOLEIL</tspan></text>
+                    y="80.691231">{{ jupiter }}</tspan></text>
                 <text
                 xml:space="preserve"
                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52776px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.264582"
@@ -278,7 +281,7 @@
                     id="tspan8696-6-2"
                     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.264582"
                     x="10.350791"
-                    y="91.397316">SOLEIL</tspan></text>
+                    y="91.397316">{{ saturn }}</tspan></text>
                 <text
                 xml:space="preserve"
                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52776px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.264582"
@@ -289,7 +292,7 @@
                     id="tspan8696-9-6-2"
                     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.264582"
                     x="10.350791"
-                    y="101.35915">SOLEIL</tspan></text>
+                    y="101.35915">{{ uranus }}</tspan></text>
                 <text
                 xml:space="preserve"
                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52776px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.264582"
@@ -300,7 +303,7 @@
                     id="tspan8696-6-2-7"
                     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.264582"
                     x="10.350791"
-                    y="112.58717">SOLEIL</tspan></text>
+                    y="112.58717">{{ neptune }}</tspan></text>
                 <text
                 xml:space="preserve"
                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52776px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.264582"
@@ -311,8 +314,11 @@
                     id="tspan8696-9-6-2-9"
                     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.264582"
                     x="10.350791"
-                    y="122.549">SOLEIL</tspan></text>
+                    y="122.549">{{ pluto }}</tspan></text>
             </g>
+
+            {{ graph_bars }}
+
             </svg>
     </section>
 

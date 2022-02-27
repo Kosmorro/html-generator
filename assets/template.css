@@ -10,11 +10,17 @@
     src: url("fonts/nimbus/NimbusSanL-Bol.otf");
 }
 
+html, body {
+    height: 100%
+}
+
 body {
     margin: 93px 30px;
     font-family: "Helvetica Neue", "Nimbus Sans L", sans-serif;
     font-size: 11px;
     line-height: 21px;
+    background: url("img/earth.png") no-repeat;
+    background-position: bottom center;
 }
 
 h1 {
@@ -42,10 +48,20 @@ h1::after {
     background-size: cover;
 }
 
+section.introduction {
+    clear: right;
+}
+
+section.introduction p {
+    margin: 0;
+    padding: 0;
+}
+
 section.moon-events {
     display: flex;
     flex-direction: row;
     min-height: 40px;
+    margin: 40px
 }
 
 section.moon-events .data {
@@ -63,10 +79,12 @@ section.moon-events .data.moonphase {
 
 section.moon-events .data.events {
     flex-grow: 2;
+    display: flex;
 }
 
 section.moon-events .data h3 {
     margin: 0;
+    margin-left: 5px;
     padding: 0;
     margin-bottom: 5px;
     display: block;
@@ -74,9 +92,14 @@ section.moon-events .data h3 {
     font-size: 9px;
 }
 
+section.moon-events .data .text {
+    margin-left: 5px;
+}
+
 section.moon-events .data ul {
     list-style: none;
     margin: 0;
+    margin-left: 5px;
     padding: 0;
     font-weight: normal;
     font-size: 11px;
@@ -89,6 +112,7 @@ section.moon-events .data ul li {
 
 section.moon-events .data ul li strong {
     font-size: 1.2em;
+    margin-right: 1.01em;
 }
 
 section.moon-events .data .best-event {
@@ -106,10 +130,6 @@ section.moon-events .data .best-event.conjunction img:nth-child(1) {
 
 section.moon-events .data .best-event.occultation img:nth-child(1) {
     margin-right: -20px;
-}
-
-.ephemerides {
-    margin-top: 40px;
 }
 
 .ephemerides svg {
