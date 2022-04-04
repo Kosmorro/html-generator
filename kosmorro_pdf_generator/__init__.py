@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
 
 from datetime import date
-from kosmorrolib import AsterEphemerides, Event, MoonPhaseType, EventType, ObjectIdentifier
+from kosmorrolib import (
+    AsterEphemerides,
+    Event,
+    MoonPhaseType,
+    EventType,
+    ObjectIdentifier,
+)
 from kosmorrolib.ephemerides import MoonPhase
 from os.path import dirname
 from babel.dates import format_date, format_time
@@ -13,9 +19,18 @@ EVENTS_TYPES = {
     EventType.PERIGEE: (0, lambda e: "%s is at its periapsis" % e.objects[0]),
     EventType.APOGEE: (0, lambda e: "%s is at its apoapsis" % e.objects[0]),
     EventType.SEASON_CHANGE: (0, lambda e: "Season change"),
-    EventType.CONJUNCTION: (5, lambda e: "%s and %s are in conjunction" % (e.objects[0], e.objects[1])),
-    EventType.MAXIMAL_ELONGATION: (10, lambda e: "Maximum elongation of %s" % e.objects[0]),
-    EventType.OCCULTATION: (20, lambda e: "%s occults %s" % (e.objects[0], e.objects[1])),
+    EventType.CONJUNCTION: (
+        5,
+        lambda e: "%s and %s are in conjunction" % (e.objects[0], e.objects[1]),
+    ),
+    EventType.MAXIMAL_ELONGATION: (
+        10,
+        lambda e: "Maximum elongation of %s" % e.objects[0],
+    ),
+    EventType.OCCULTATION: (
+        20,
+        lambda e: "%s occults %s" % (e.objects[0], e.objects[1]),
+    ),
     EventType.OPPOSITION: (50, lambda e: "%s is in opposition" % e.objects[0]),
     EventType.LUNAR_ECLIPSE: (100, lambda e: "Lunar eclipse"),
 }
@@ -47,8 +62,15 @@ OBJECTS_IMAGES = {
 }
 
 
-def generate_pdf(for_date: date, ephemerides: [AsterEphemerides], moon_phase: MoonPhase, events: [Event], timezone: int = 0, locale: str = 'en'):
-    with open('assets/template.html', 'r') as file:
+def generate_pdf(
+    for_date: date,
+    ephemerides: [AsterEphemerides],
+    moon_phase: MoonPhase,
+    events: [Event],
+    timezone: int = 0,
+    locale: str = "en",
+):
+    with open("assets/template.html", "r") as file:
         template = file.read()
 
     def parse_template(template: str, **kwargs: {str: str}) -> str:
@@ -58,7 +80,7 @@ def generate_pdf(for_date: date, ephemerides: [AsterEphemerides], moon_phase: Mo
         return template
 
     def fmt_date(the_date, the_locale):
-        return format_date(the_date, 'full', the_locale)
+        return format_date(the_date, "full", the_locale)
 
     def fmt_events(the_events: [Event]) -> (str, Event):
         template = "<li><strong>{{ event_hour }}</strong> {{ event_description }}</li>"
@@ -75,28 +97,41 @@ def generate_pdf(for_date: date, ephemerides: [AsterEphemerides], moon_phase: Mo
 
             html += parse_template(
                 template,
-                event_hour=format_time(event.start_time, 'short'),
-                event_description=description(event)
+                event_hour=format_time(event.start_time, "short"),
+                event_description=description(event),
             )
 
         return html, highest_event
 
     images_objects = {}
 
-    for object_name in ["sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto"]:
-        images_objects[f"image_{object_name}"] = f"{ASSETS_DIR}/img/objects/{object_name}.png"
+    for object_name in [
+        "sun",
+        "moon",
+        "mercury",
+        "venus",
+        "mars",
+        "jupiter",
+        "saturn",
+        "uranus",
+        "neptune",
+        "pluto",
+    ]:
+        images_objects[
+            f"image_{object_name}"
+        ] = f"{ASSETS_DIR}/img/objects/{object_name}.png"
 
     formated_events, highest_event = fmt_events(events)
     event_illustration = lambda e: ""
 
     if highest_event is not None:
         event_illustration = {
-            EventType.OPPOSITION: lambda e: '',
-            EventType.CONJUNCTION: lambda e: f'{OBJECTS_IMAGES[e.objects[0].identifier]}{OBJECTS_IMAGES[e.objects[1].identifier]}',
-            EventType.OCCULTATION: lambda e: '',
-            EventType.MAXIMAL_ELONGATION: lambda e: '',
-            EventType.SEASON_CHANGE: lambda e: '',
-            EventType.LUNAR_ECLIPSE: lambda e: '',
+            EventType.OPPOSITION: lambda e: "",
+            EventType.CONJUNCTION: lambda e: f"{OBJECTS_IMAGES[e.objects[0].identifier]}{OBJECTS_IMAGES[e.objects[1].identifier]}",
+            EventType.OCCULTATION: lambda e: "",
+            EventType.MAXIMAL_ELONGATION: lambda e: "",
+            EventType.SEASON_CHANGE: lambda e: "",
+            EventType.LUNAR_ECLIPSE: lambda e: "",
         }.get(highest_event.event_type, lambda e: "")
         print(highest_event.objects[0].identifier)
         print(event_illustration(highest_event))
@@ -118,7 +153,7 @@ def generate_pdf(for_date: date, ephemerides: [AsterEphemerides], moon_phase: Mo
             MoonPhaseType.FULL_MOON: "Full Moon",
             MoonPhaseType.WANING_GIBBOUS: "Waning Gibbous",
             MoonPhaseType.LAST_QUARTER: "Last Quarter",
-            MoonPhaseType.WANING_CRESCENT: "Waning Crescent"
+            MoonPhaseType.WANING_CRESCENT: "Waning Crescent",
         }.get(moon_phase.phase_type),
         events_list=formated_events,
         event_illustration=event_illustration(highest_event),
@@ -126,7 +161,7 @@ def generate_pdf(for_date: date, ephemerides: [AsterEphemerides], moon_phase: Mo
         **images_objects,
     )
 
-    with open('/tmp/truc.html', 'w') as file:
+    with open("/tmp/truc.html", "w") as file:
         file.write(html)
 
 
@@ -134,4 +169,6 @@ from kosmorrolib import get_ephemerides, get_events, get_moon_phase, Position
 
 d = date(2022, 2, 27)
 
-generate_pdf(d, get_ephemerides(Position(50.5824, 3.0624), d), get_moon_phase(d), get_events(d))
+generate_pdf(
+    d, get_ephemerides(Position(50.5824, 3.0624), d), get_moon_phase(d), get_events(d)
+)

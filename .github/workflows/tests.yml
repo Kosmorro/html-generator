@@ -1,0 +1,61 @@
+name: Tests
+
+on:
+  push:
+    branches: [main, features]
+  pull_request:
+    branches: [main, features]
+  workflow_dispatch:
+
+jobs:
+  doc-tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-11.0
+          - windows-latest
+        python_version:
+          - '3.7'
+          - '3.8'
+          - '3.9'
+          - '3.10'
+
+    name: Doc tests (Python ${{ matrix.python_version }} on ${{ matrix.os }})
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python_version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python_version }}
+        architecture: x64
+
+    - name: Prepare environment
+      run: |
+        python3 -m pip install --upgrade pip poetry
+
+    - name: Install dependencies
+      env:
+        PIP_PREFER_BINARY: 1
+      run: |
+        python3 -m poetry install
+
+    - name: Run doc tests (with coverage)
+      if: ${{ matrix.os == 'ubuntu-latest' && matrix.python_version == '3.10' }}
+      run: |
+        make coverage-doctests
+
+    - name: Run doc tests (without coverage)
+      if: ${{ matrix.os != 'ubuntu-latest' || matrix.python_version != '3.10' }}
+      run: |
+        make doctests
+
+    - name: Push code coverage
+      env:
+        COVERALLS_PRO_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      if: ${{ matrix.os == 'ubuntu-latest' && matrix.python_version == '3.10' }}
+      run: |
+        python3 -m poetry run coveralls --service=github
