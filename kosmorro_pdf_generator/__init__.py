@@ -10,17 +10,27 @@ from kosmorrolib.ephemerides import MoonPhase
 from babel.dates import format_date
 
 
-def generate_pdf(output_file: str, for_date: date, ephemerides: [AsterEphemerides], moon_phase: MoonPhase, events: [Event], timezone: int = 0, locale: str = 'en'):
-    with open('assets/template.html', 'r') as file:
+def generate_pdf(
+    output_file: str,
+    for_date: date,
+    ephemerides: [AsterEphemerides],
+    moon_phase: MoonPhase,
+    events: [Event],
+    timezone: int = 0,
+    locale: str = "en",
+):
+    with open("assets/template.html", "r") as file:
         template = file.read()
 
     def fmt_date(the_date, the_locale):
-        return format_date(the_date, 'full', the_locale)
+        return format_date(the_date, "full", the_locale)
 
     images_objects = {}
 
     for object_name in get_object_names_from_keys().keys():
-        images_objects[f"image_{object_name}"] = f"{ASSETS_DIR}/img/objects/{object_name}.png"
+        images_objects[
+            f"image_{object_name}"
+        ] = f"{ASSETS_DIR}/img/objects/{object_name}.png"
 
     formated_events, highest_event = fmt_events(events)
 
@@ -48,5 +58,5 @@ def generate_pdf(output_file: str, for_date: date, ephemerides: [AsterEphemeride
         **images_objects,
     )
 
-    with open(f'{output_file}.html', 'w') as file:
+    with open(f"{output_file}.html", "w") as file:
         file.write(html)

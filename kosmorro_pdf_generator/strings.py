@@ -41,13 +41,42 @@ def get_object_names_from_keys() -> {str: str}:
 
 def get_event_description(event: Event) -> (int, str):
     weight, description = {
-        EventType.PERIGEE: (0, lambda e: "%s is at its periapsis" % get_object_name(e.objects[0].identifier)),
-        EventType.APOGEE: (0, lambda e: "%s is at its apoapsis" % get_object_name(e.objects[0].identifier)),
+        EventType.PERIGEE: (
+            0,
+            lambda e: "%s is at its periapsis"
+            % get_object_name(e.objects[0].identifier),
+        ),
+        EventType.APOGEE: (
+            0,
+            lambda e: "%s is at its apoapsis"
+            % get_object_name(e.objects[0].identifier),
+        ),
         EventType.SEASON_CHANGE: (0, lambda e: "Season change"),
-        EventType.CONJUNCTION: (5, lambda e: "%s and %s are in conjunction" % (get_object_name(e.objects[0].identifier), get_object_name(e.objects[1].identifier))),
-        EventType.MAXIMAL_ELONGATION: (10, lambda e: "Maximum elongation of %s" % get_object_name(e.objects[0].identifier)),
-        EventType.OCCULTATION: (20, lambda e: "%s occults %s" % (get_object_name(e.objects[0].identifier), get_object_name(e.objects[1].identifier))),
-        EventType.OPPOSITION: (50, lambda e: "%s is in opposition" % get_object_name(e.objects[0].identifier)),
+        EventType.CONJUNCTION: (
+            5,
+            lambda e: "%s and %s are in conjunction"
+            % (
+                get_object_name(e.objects[0].identifier),
+                get_object_name(e.objects[1].identifier),
+            ),
+        ),
+        EventType.MAXIMAL_ELONGATION: (
+            10,
+            lambda e: "Maximum elongation of %s"
+            % get_object_name(e.objects[0].identifier),
+        ),
+        EventType.OCCULTATION: (
+            20,
+            lambda e: "%s occults %s"
+            % (
+                get_object_name(e.objects[0].identifier),
+                get_object_name(e.objects[1].identifier),
+            ),
+        ),
+        EventType.OPPOSITION: (
+            50,
+            lambda e: "%s is in opposition" % get_object_name(e.objects[0].identifier),
+        ),
         EventType.LUNAR_ECLIPSE: (100, lambda e: "Lunar eclipse"),
     }.get(event.event_type)
 
@@ -63,7 +92,7 @@ def get_moon_phase_description(moon_phase: MoonPhaseType) -> str:
         MoonPhaseType.FULL_MOON: "Full Moon",
         MoonPhaseType.WANING_GIBBOUS: "Waning Gibbous",
         MoonPhaseType.LAST_QUARTER: "Last Quarter",
-        MoonPhaseType.WANING_CRESCENT: "Waning Crescent"
+        MoonPhaseType.WANING_CRESCENT: "Waning Crescent",
     }.get(moon_phase)
 
 

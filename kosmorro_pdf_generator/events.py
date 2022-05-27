@@ -22,8 +22,8 @@ def fmt_events(the_events: [Event]) -> (str, Event):
 
         html += parse_template(
             template,
-            event_hour=format_time(event.start_time, 'short'),
-            event_description=description
+            event_hour=format_time(event.start_time, "short"),
+            event_description=description,
         )
 
     return html, highest_event
@@ -31,10 +31,10 @@ def fmt_events(the_events: [Event]) -> (str, Event):
 
 def get_event_illustration(event: Event) -> str:
     return {
-        EventType.OPPOSITION: lambda e: '',
-        EventType.CONJUNCTION: lambda e: f'{get_object_img(e.objects[0].identifier)}{get_object_img(e.objects[1].identifier)}',
-        EventType.OCCULTATION: lambda e: '',
-        EventType.MAXIMAL_ELONGATION: lambda e: '',
-        EventType.SEASON_CHANGE: lambda e: '',
-        EventType.LUNAR_ECLIPSE: lambda e: '',
+        EventType.OPPOSITION: lambda e: "",
+        EventType.CONJUNCTION: lambda e: f"{get_object_img(e.objects[0].identifier)}{get_object_img(e.objects[1].identifier)}",
+        EventType.OCCULTATION: lambda e: "",
+        EventType.MAXIMAL_ELONGATION: lambda e: "",
+        EventType.SEASON_CHANGE: lambda e: "",
+        EventType.LUNAR_ECLIPSE: lambda e: "",
     }.get(event.event_type, lambda e: "")(event)
