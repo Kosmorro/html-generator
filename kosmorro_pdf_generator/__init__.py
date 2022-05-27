@@ -19,7 +19,7 @@ def generate_pdf(
     timezone: int = 0,
     locale: str = "en",
 ):
-    with open("assets/template.html", "r") as file:
+    with open(f"{ASSETS_DIR}/template.html", "r") as file:
         template = file.read()
 
     def fmt_date(the_date, the_locale):

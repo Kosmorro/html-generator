@@ -4,7 +4,7 @@ from os.path import dirname
 from kosmorrolib import Event, ObjectIdentifier, EventType, MoonPhaseType
 
 
-ASSETS_DIR = "%s/../assets" % dirname(__file__)
+ASSETS_DIR = "%s/assets" % dirname(__file__)
 
 
 def get_object_name(identifier: ObjectIdentifier) -> str:
