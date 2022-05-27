@@ -90,7 +90,7 @@ numpy = "*"
 
 [[package]]
 name = "kosmorrolib"
-version = "1.0.5"
+version = "1.0.6"
 description = "A library to computes the ephemerides."
 category = "main"
 optional = false
@@ -286,11 +286,12 @@ importlib-metadata = [
     {file = "importlib_metadata-4.11.4.tar.gz", hash = "sha256:5d26852efe48c0a32b0509ffbc583fda1a2266545a78d104a6f4aff3db17d700"},
 ]
 jplephem = [
+    {file = "jplephem-2.17-py3-none-any.whl", hash = "sha256:76efa1290c93ec6c34c7d21345b937f2563e266de34c40c0f55b0ecc56c0f825"},
     {file = "jplephem-2.17.tar.gz", hash = "sha256:e1c6e5565c4d00485f1063241b4d1eff044585c22b8e97fad0ff2f6efb8aaa27"},
 ]
 kosmorrolib = [
-    {file = "kosmorrolib-1.0.5-py3-none-any.whl", hash = "sha256:3b5fd04e56364c1d5d0a08032a11cbfa827c202da5298303263e8bac8fde5bc1"},
-    {file = "kosmorrolib-1.0.5.tar.gz", hash = "sha256:1dd63aea8407164ba8ecabcf2760f9c4c2a6fb3b13f39bc8b1aa100df60dc9bc"},
+    {file = "kosmorrolib-1.0.6-py3-none-any.whl", hash = "sha256:9ffbbaa8666c1222bf8a25d543afa72a0a80249017d342a6667bcae8657effc0"},
+    {file = "kosmorrolib-1.0.6.tar.gz", hash = "sha256:8c77f40b346d183147cb3e927b3ea5c7d4d7067ce7e49edb73821566f74d5e51"},
 ]
 mypy-extensions = [
     {file = "mypy_extensions-0.4.3-py2.py3-none-any.whl", hash = "sha256:090fedd75945a69ae91ce1303b5824f428daf5a028d2f6ab8a299250a846f15d"},
@@ -380,6 +381,7 @@ six = [
     {file = "six-1.16.0.tar.gz", hash = "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"},
 ]
 skyfield = [
+    {file = "skyfield-1.42-py3-none-any.whl", hash = "sha256:4f1c5574626455f15fc3f336be1ed9ed77efe5b97b4763af6ed358ee2f9bd3b5"},
     {file = "skyfield-1.42.tar.gz", hash = "sha256:3447fd3a9a9dabc2080e6a4efb56d9883decf261ad78e6c9b3f187c4fc761ace"},
 ]
 skyfield-data = [
