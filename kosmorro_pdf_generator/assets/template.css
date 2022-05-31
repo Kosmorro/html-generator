@@ -1,31 +1,26 @@
 @font-face {
-    font-family: "Nimbus Sans L";
-    font-weight: normal;
-    src: url("fonts/nimbus/NimbusSanL-Reg.otf");
-}
-
-@font-face {
-    font-family: "Nimbus Sans L";
-    font-weight: bold;
-    src: url("fonts/nimbus/NimbusSanL-Bol.otf");
+    font-family: "Nimbus Sans L Reg";
+    src: url("{{ media_folder }}/fonts/nimbus/NimbusSanL-Reg.otf");
 }
 
 html, body {
-    height: 100%
+    height: 100%;
 }
 
 body {
     margin: 93px 30px;
-    font-family: "Helvetica Neue", "Nimbus Sans L", sans-serif;
-    font-size: 11px;
-    line-height: 21px;
-    background: url("img/earth.png") no-repeat;
+    font-family: "Helvetica Neue", "Nimbus Sans L Reg", sans-serif;
+    font-size: 13px;
+    line-height: 17px;
+    background-image: url("{{ media_folder }}/img/earth.png");
+    background-repeat: no-repeat;
     background-position: bottom center;
 }
 
 h1 {
     font-size: 23px;
     line-height: 47px;
+    font-weight: normal;
 }
 
 h1::before {
@@ -33,7 +28,7 @@ h1::before {
     display: block;
     width: 84px;
     height: 28px;
-    background-image: url("img/logo.svg");
+    background-image: url("{{ media_folder }}/img/logo.svg");
     background-size: cover;
 }
 
@@ -44,7 +39,7 @@ h1::after {
     height: 204px;
     margin-top: -100px;
     float: right;
-    background-image: url("img/instrument.png");
+    background-image: url("{{ media_folder }}/img/instrument.png");
     background-size: cover;
 }
 
@@ -53,7 +48,7 @@ section.introduction {
 }
 
 section.introduction p {
-    margin: 0;
+    margin: 5px 0;
     padding: 0;
 }
 
@@ -72,7 +67,7 @@ section.moon-events .data {
 }
 
 section.moon-events .data.moonphase {
-    background-image: url("img/moon-phase.png");
+    background-image: url("{{ media_folder }}/img/moon-phase.png");
     background-repeat: no-repeat;
     background-size: 31px;
 }
@@ -135,4 +130,10 @@ section.moon-events .data .best-event.occultation img:nth-child(1) {
 .ephemerides svg {
     width: 150mm;
     height: 100mm;
+}
+
+@page {
+    size: A4;
+    margin: 93px 30px;
+    margin-bottom: 0;
 }

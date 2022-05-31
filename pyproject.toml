@@ -9,6 +9,7 @@ license = "AGPL-3.0-or-later"
 python = ">=3.7,<3.11"
 kosmorrolib = "^1.0"
 Babel = "^2.10.3"
+weasyprint = "^55.0"
 
 [tool.poetry.dev-dependencies]
 black = "^22.6.0"

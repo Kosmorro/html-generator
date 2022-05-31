@@ -5,6 +5,7 @@ from kosmorrolib import Event, ObjectIdentifier, EventType, MoonPhaseType
 
 
 ASSETS_DIR = "%s/assets" % dirname(__file__)
+ASSETS_DIR_URI = f"file://{ASSETS_DIR}"
 
 
 def get_object_name(identifier: ObjectIdentifier) -> str:
@@ -98,14 +99,14 @@ def get_moon_phase_description(moon_phase: MoonPhaseType) -> str:
 
 def get_object_img(identifier: ObjectIdentifier) -> str:
     return {
-        ObjectIdentifier.SUN: f'<img src="{ASSETS_DIR}/img/objects/sun.png" alt="" aria-hidden="true" />',
-        ObjectIdentifier.MOON: f'<img src="{ASSETS_DIR}/img/objects/moon.png" alt="" aria-hidden="true" />',
-        ObjectIdentifier.MERCURY: f'<img src="{ASSETS_DIR}/img/objects/mercury.png" alt="" aria-hidden="true" />',
-        ObjectIdentifier.VENUS: f'<img src="{ASSETS_DIR}/img/objects/venus.png" alt="" aria-hidden="true" />',
-        ObjectIdentifier.MARS: f'<img src="{ASSETS_DIR}/img/objects/mars.png" alt="" aria-hidden="true" />',
-        ObjectIdentifier.JUPITER: f'<img src="{ASSETS_DIR}/img/objects/jupiter.png" alt="" aria-hidden="true" />',
-        ObjectIdentifier.SATURN: f'<img src="{ASSETS_DIR}/img/objects/saturn.png" alt="" aria-hidden="true" />',
-        ObjectIdentifier.URANUS: f'<img src="{ASSETS_DIR}/img/objects/uranus.png" alt="" aria-hidden="true" />',
-        ObjectIdentifier.NEPTUNE: f'<img src="{ASSETS_DIR}/img/objects/neptune.png" alt="" aria-hidden="true" />',
-        ObjectIdentifier.PLUTO: f'<img src="{ASSETS_DIR}/img/objects/pluto.png" alt="" aria-hidden="true" />',
+        ObjectIdentifier.SUN: f'<img src="{ASSETS_DIR_URI}/img/objects/sun.png" alt="" aria-hidden="true" />',
+        ObjectIdentifier.MOON: f'<img src="{ASSETS_DIR_URI}/img/objects/moon.png" alt="" aria-hidden="true" />',
+        ObjectIdentifier.MERCURY: f'<img src="{ASSETS_DIR_URI}/img/objects/mercury.png" alt="" aria-hidden="true" />',
+        ObjectIdentifier.VENUS: f'<img src="{ASSETS_DIR_URI}/img/objects/venus.png" alt="" aria-hidden="true" />',
+        ObjectIdentifier.MARS: f'<img src="{ASSETS_DIR_URI}/img/objects/mars.png" alt="" aria-hidden="true" />',
+        ObjectIdentifier.JUPITER: f'<img src="{ASSETS_DIR_URI}/img/objects/jupiter.png" alt="" aria-hidden="true" />',
+        ObjectIdentifier.SATURN: f'<img src="{ASSETS_DIR_URI}/img/objects/saturn.png" alt="" aria-hidden="true" />',
+        ObjectIdentifier.URANUS: f'<img src="{ASSETS_DIR_URI}/img/objects/uranus.png" alt="" aria-hidden="true" />',
+        ObjectIdentifier.NEPTUNE: f'<img src="{ASSETS_DIR_URI}/img/objects/neptune.png" alt="" aria-hidden="true" />',
+        ObjectIdentifier.PLUTO: f'<img src="{ASSETS_DIR_URI}/img/objects/pluto.png" alt="" aria-hidden="true" />',
     }.get(identifier)
