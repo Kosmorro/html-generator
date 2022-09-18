@@ -2,4 +2,4 @@
 
 export.pdf.html
 /kosmorro_pdf_generator/__pycache__/*
-*.pdf
+*.html

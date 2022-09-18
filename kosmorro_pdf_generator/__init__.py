@@ -15,11 +15,8 @@ from kosmorrolib import AsterEphemerides, Event
 from kosmorrolib.ephemerides import MoonPhase
 from babel.dates import format_date
 
-from weasyprint import HTML, CSS
-from weasyprint.text.fonts import FontConfiguration
 
-
-def generate_pdf(
+def generate_html(
     output_file: str,
     moon_phase: MoonPhase,
     events: [Event],
@@ -27,7 +24,6 @@ def generate_pdf(
     ephemerides: [AsterEphemerides] = None,
     timezone: int = 0,
     locale: str = "en",
-    debug: bool = False,
 ):
     with open(f"{ASSETS_DIR}/template.html", "r") as file:
         template = file.read()
@@ -79,14 +75,5 @@ def generate_pdf(
         **images_objects,
     )
 
-    if debug:
-        with open(f"{output_file}.html", "w") as file:
-            file.write(html)
-
-    # Load fonts
-    font_config = FontConfiguration()
-    CSS(string=stylesheet, font_config=font_config)
-
-    HTML(string=html).write_pdf(
-        output_file, font_config=font_config, optimize_size=("fonts", "images")
-    )
+    with open(output_file, "w") as file:
+        file.write(html)
